@@ -1,6 +1,7 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
-import {createCategory} from '../../actions/categoryActions';
+import {bindActionCreators} from 'redux';
+import * as categoryActions from '../../actions/categoryActions';
 
 class CategoriesPage extends React.Component {
     constructor(props, context) {
@@ -20,7 +21,7 @@ class CategoriesPage extends React.Component {
     }
     
     onClickSave() {
-        this.props.dispatch(createCategory(this.state.category));
+        this.props.actions.createCategory(this.state.category);
     }
     
     categoryRow(category, index) {
@@ -47,7 +48,7 @@ class CategoriesPage extends React.Component {
 }
 
 CategoriesPage.propTypes = {
-    dispatch: PropTypes.func.isRequired,
+    actions: PropTypes.object.isRequired,
     categories: PropTypes.array.isRequired
 };
 
@@ -57,4 +58,10 @@ function mapStateToProps(state, ownProps) {
     };
 }
 
-export default connect(mapStateToProps)(CategoriesPage);
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators(categoryActions, dispatch)
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CategoriesPage);

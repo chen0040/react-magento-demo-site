@@ -12,7 +12,6 @@ class MagentoAccountApi {
             username: username,
             password: password
         },
-        withCredentials: true,
     });
   }
 }

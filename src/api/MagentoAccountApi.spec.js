@@ -12,10 +12,10 @@ describe('Magento Account Api', () => {
           MagentoAccountInfo.username, 
           MagentoAccountInfo.password)
           .then((response) => {
-              console.log('testing');
-            expect(true).toEqual(true);
-              console.log(response);
-              done();
+            let token = response.data;
+            expect(response.status).toEqual(200);
+            expect(token.length).toBeGreaterThan(0);
+            done();
           }).catch(reason => {
             console.log(reason);
             done(new Error(reason));

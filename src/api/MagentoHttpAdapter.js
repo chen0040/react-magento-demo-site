@@ -1,5 +1,4 @@
-var path=require('path');
-var lib=path.join(path.dirname(require.resolve('axios')),'lib/adapters/http');
-var http=require(lib);
+import path from 'path';
+import http from 'axios/lib/adapters/http';
 
 export default http;

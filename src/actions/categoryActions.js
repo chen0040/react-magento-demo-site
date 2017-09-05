@@ -1,11 +1,20 @@
 import * as types from './actionTypes';
+import MagentoCategoryApi from '../api/MagentoCategoryApi';
+import MagentoAccountInfo from '../api/MagentoAccountInfo';
 
-export function createCategory(category) {
-    return { type: types.CREATE_CATEGORY, category };
+export function loadRootCategorySuccess(rootCategory) {
+    return {
+        type: types.LOAD_ROOT_CATEGORY_SUCCESS,
+        rootCategory 
+    };
 }
 
-export function loadCategory() {
+export function loadRootCategory(token) {
     return function(dispatch) {
-        return 
+        return MagentoCategoryApi.loadRootCategory(MagentoAccountInfo.url, token).then(response => {
+            dispatch(loadRootCategorySuccess(response.data));
+        }).catch(error => {
+            throw(error);
+        });
     }
 }

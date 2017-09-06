@@ -1,14 +1,16 @@
 import React, {PropTypes} from 'react';
 import CategoryListView from './CategoryListView';
 import Padding from '../common/Padding';
+import {Link} from 'react-router';
 
 const CategoryView = ({category}) => {
-    console.log(category);
+    
     return (
         <div>
             <div>
                 <Padding size={category.level} />
-                -{category.name}
+                
+                -<Link to={'/categories/' + category.id}>{category.name}</Link>
             </div>
             <CategoryListView categories={category.children_data} />
         </div>

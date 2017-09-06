@@ -1,11 +1,12 @@
 import React, {PropTypes} from 'react';
+import CategoryListView from './CategoryListView';
 
 const CategoryView = ({category}) => {
     console.log(category);
     return (
         <div>
-            <h1>Say something here</h1>
-            <h1>{category.id}</h1>
+            <h1>{category.name}</h1>
+            <CategoryListView categories={category.children_data} />
         </div>
     );
 };

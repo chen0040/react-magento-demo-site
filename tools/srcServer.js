@@ -29,11 +29,11 @@ app.get(MagentoCategoryApi.Path4Categories, function(req, res, next) {
     MagentoCategoryApi.loadRootCategory(MagentoAccountInfo.url).then(response => {
         console.log(response.data);
         
-        res.status(200).json({ status: 200, data: response.data });    
+        res.status(200).json(response.data);    
         next();
     }).catch(error => {
         console.log(error);
-        res.send( { status: 500, data: error }); 
+        res.send(error); 
         next();
     });
     
@@ -46,11 +46,11 @@ app.post(MagentoAccountApi.Path4LoginAsClient, function(req, res, next) {
     MagentoAccountApi.loginAsClient(MagentoAccountInfo.url, username, password).then(response => {
         console.log(response.data);
         
-        res.status(200).json({ status: 200, data: response.data });    
+        res.status(200).json(response.data);    
         next();
     }).catch(error => {
         console.log(error);
-        res.send( { status: 500, data: error }); 
+        res.send(error); 
         next();
     });
     

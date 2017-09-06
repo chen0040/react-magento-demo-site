@@ -1,11 +1,15 @@
 import React, {PropTypes} from 'react';
 import CategoryListView from './CategoryListView';
+import Padding from '../common/Padding';
 
 const CategoryView = ({category}) => {
     console.log(category);
     return (
         <div>
-            <h1>{category.name}</h1>
+            <div>
+                <Padding size={category.level} />
+                -{category.name}
+            </div>
             <CategoryListView categories={category.children_data} />
         </div>
     );

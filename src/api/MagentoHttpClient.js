@@ -16,6 +16,10 @@ class MagentoHttpClient {
             return axios({
                 adapter: MagentoHttpAdapter,
                 method: 'get',
+                headers: {
+                    'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
+                    'Access-Control-Allow-Origin': '*',
+                },
                 url: url,
             });
         }

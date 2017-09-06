@@ -16,5 +16,5 @@ export function loadRootCategory(token) {
         }).catch(error => {
             throw(error);
         });
-    }
+    };
 }

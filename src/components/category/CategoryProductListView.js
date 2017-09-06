@@ -3,14 +3,11 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import initialStates from '../../reducers/initialStates';
 import * as categoryActions from '../../actions/categoryActions';
+import CategoryProductView from './CategoryProductView';
 
 class CategoryProductListView extends React.Component {
     constructor(props, context) {
         super(props, context);
-        
-        this.state = {
-            categoryProduts: []  
-        };
     }
     
     componentWillReceiveProps(nextProps) {
@@ -28,8 +25,9 @@ class CategoryProductListView extends React.Component {
         
         return (
             <div>
-                <h1>{this.props.category.name}</h1>
-                <div>products: {this.props.categoryProducts.length}</div>
+                <div>
+                    {this.props.categoryProducts.map((product, index) => <CategoryProductView key={product.sku} categoryProduct={product} />)} 
+                </div>
             </div>
         );
     }

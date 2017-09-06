@@ -1,4 +1,3 @@
-import axios from 'axios';
 import MagentoHttpClient from './MagentoHttpClient';
 
 class MagentoCategoryApi {

@@ -17,7 +17,8 @@ describe('Magento Category Api', () => {
    it('can load the products in category 19', (done) => {
        let categoryId = 19;
        MagentoCategoryApi.loadProducts(MagentoAccountInfo.url, categoryId).then(response => {
-           console.log(response.data);
+           //console.log(response.data);
+           expect(response.data.length).toBeGreaterThan(0);
            done();
        }).catch(reason => {
            console.log(reason);

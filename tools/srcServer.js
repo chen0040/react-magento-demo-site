@@ -7,6 +7,7 @@ import open from 'open';
 import MagentoCategoryApi from '../src/api/MagentoCategoryApi';
 import MagentoAccountInfo from '../src/api/MagentoAccountInfo';
 import MagentoAccountApi from '../src/api/MagentoAccountApi';
+import MagentoProductApi from '../src/api/MagentoProductApi';
 
 /* eslint-disable no-console */
 
@@ -53,6 +54,20 @@ app.get(MagentoCategoryApi.Path4Categories + '/:categoryId/products', function(r
         next();
     });
     
+});
+
+app.get(MagentoProductApi.Path4Products + '/:sku', function(req, res, next) {
+    res.set('Content-Type', 'application/json');
+    MagentoProductApi.loadProduct(MagentoAccountInfo.url, encodeURIComponent(req.params.sku)).then(response => {
+        console.log(response.data);
+        
+        res.status(200).json(response.data);    
+        next();
+    }).catch(error => {
+        console.log(error);
+        res.send(error); 
+        next();
+    });
 });
 
 app.post(MagentoAccountApi.Path4LoginAsClient, function(req, res, next) {

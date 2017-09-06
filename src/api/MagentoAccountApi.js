@@ -11,7 +11,7 @@ class MagentoAccountApi {
         data: {
             username: username,
             password: password
-        },
+        }
     });
   }
 }

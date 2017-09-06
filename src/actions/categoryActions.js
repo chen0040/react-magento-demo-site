@@ -11,7 +11,7 @@ export function loadRootCategorySuccess(rootCategory) {
 
 export function loadRootCategory(token) {
     return function(dispatch) {
-        return MagentoCategoryApi.loadRootCategory(MagentoAccountInfo.url, token).then(response => {
+        return MagentoCategoryApi.loadRootCategory('', token).then(response => {
             dispatch(loadRootCategorySuccess(response.data));
         }).catch(error => {
             throw(error);

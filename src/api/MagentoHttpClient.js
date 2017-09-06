@@ -8,19 +8,19 @@ class MagentoHttpClient {
                 adapter: MagentoHttpAdapter,
                 method: 'get',
                 headers: {
-                    "Authorization": "Bearer " + token,
+                    "Authorization": "Bearer " + token
                 },
-                url: url,
+                url: url
             });
         } else {
             return axios({
                 adapter: MagentoHttpAdapter,
                 method: 'get',
-                headers: {
+                /*headers: {
                     'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
                     'Access-Control-Allow-Origin': '*',
-                },
-                url: url,
+                },*/
+                url: url
             });
         }
     }

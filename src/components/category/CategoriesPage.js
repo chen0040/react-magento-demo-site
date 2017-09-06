@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as categoryActions from '../../actions/categoryActions';
-import {CategoryView} from './CategoryView';
+import CategoryView from './CategoryView';
 
 class CategoriesPage extends React.Component {
     constructor(props, context) {

@@ -23,10 +23,6 @@ app.use(bodyParser.json());
 
 app.use(require('webpack-hot-middleware')(compiler));
 
-app.get('/', function(req, res) {
-  res.sendFile(path.join( __dirname, '../src/index.html'));
-});
-
 app.get(MagentoCategoryApi.Path4Categories, function(req, res, next) {
     
     res.set('Content-Type', 'application/json');
@@ -58,6 +54,10 @@ app.post(MagentoAccountApi.Path4LoginAsClient, function(req, res, next) {
         next();
     });
     
+});
+
+app.get('*', function(req, res) {
+  res.sendFile(path.join( __dirname, '../src/index.html'));
 });
 
 app.listen(port, function(err) {

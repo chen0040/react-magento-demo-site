@@ -9,3 +9,12 @@ export default function rootCategory(state = initialStates.rootCategory, action)
             return state;
     }
 }
+
+export function categoryProducts(state = initialStates.categoryProducts, action) {
+    switch(action.type) {
+        case actionTypes.LOAD_CATEGORY_PRODUCTS_SUCCESS:
+            return action.categoryProducts;
+        default:
+            return state;
+    }
+}

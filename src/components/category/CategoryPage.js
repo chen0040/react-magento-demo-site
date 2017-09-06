@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as categoryActions from '../../actions/categoryActions';
 import initialStates from '../../reducers/initialStates';
+import CategoryProductListView from './CategoryProductListView';
 
 class CategoryPage extends React.Component {
     constructor(props, context) {
@@ -30,7 +31,7 @@ class CategoryPage extends React.Component {
         return (
             <div>
                 <h1>Category: {this.state.category.name}</h1>
-                
+                <CategoryProductListView category={this.state.category} />
             </div>
         );
     }

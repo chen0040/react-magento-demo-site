@@ -39,6 +39,22 @@ app.get(MagentoCategoryApi.Path4Categories, function(req, res, next) {
     
 });
 
+app.get(MagentoCategoryApi.Path4Categories + '/:categoryId/products', function(req, res, next) {
+    
+    res.set('Content-Type', 'application/json');
+    MagentoCategoryApi.loadProducts(MagentoAccountInfo.url, req.params.categoryId).then(response => {
+        console.log(response.data);
+        
+        res.status(200).json(response.data);    
+        next();
+    }).catch(error => {
+        console.log(error);
+        res.send(error); 
+        next();
+    });
+    
+});
+
 app.post(MagentoAccountApi.Path4LoginAsClient, function(req, res, next) {
     res.set('Content-Type', 'application/json');
     let username = req.body.username;

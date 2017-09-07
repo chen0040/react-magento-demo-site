@@ -49,9 +49,11 @@ class CategoryProductListView extends React.Component {
         }
                                
         return (
-            <div>
-                <div>
-                    <CategoryProductListViewPaging totalPages={totalPages} onPageClicked={this.gotoPage} pageSize={pageSize} categoryProducts={this.props.categoryProducts} />
+            <div className="container-fluid">
+                <div className="row-fluid">
+                <CategoryProductListViewPaging totalPages={totalPages} onPageClicked={this.gotoPage} pageSize={pageSize} categoryProducts={this.props.categoryProducts} />
+                </div>
+                <div className="row-fluid">
                     {displayed.map((product, index) => <CategoryProductView key={product.sku} categoryProduct={product} />)} 
                 </div>
             </div>

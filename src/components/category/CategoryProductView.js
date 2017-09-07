@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import initialStates from '../../reducers/initialStates';
 import * as productActions from '../../actions/productActions';
+import ProductImage from '../product/ProductImage';
 
 class CategoryProductView extends React.Component {
     constructor(props, context) {
@@ -17,9 +18,28 @@ class CategoryProductView extends React.Component {
     render() {
         let sku = this.props.categoryProduct.sku;
         if(sku in this.props.products) {
+            let product = this.props.products[sku];
             return (
-                <div>
-                    {this.props.products[sku].name}
+                <div className="col-md-6">
+                    <table>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <ProductImage product={product} />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            {product.name}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            ${product.price}
+                        </td>
+                    </tr>
+                    </tbody>
+                    </table>
                 </div>
             );
         } else {

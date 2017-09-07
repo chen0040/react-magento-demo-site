@@ -5,5 +5,6 @@ export default {
         children_data: [],
         level: 0
     },
-    categoryProducts: []
+    categoryProducts: [],
+    products: {}
 }

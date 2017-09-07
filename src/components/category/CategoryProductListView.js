@@ -4,10 +4,22 @@ import {bindActionCreators} from 'redux';
 import initialStates from '../../reducers/initialStates';
 import * as categoryActions from '../../actions/categoryActions';
 import CategoryProductView from './CategoryProductView';
+import CategoryProductListViewPaging from './CategoryProductListViewPaging';
 
 class CategoryProductListView extends React.Component {
     constructor(props, context) {
         super(props, context);
+        this.state = {
+            pageIndex: 0
+        };
+        
+        this.gotoPage = this.gotoPage.bind(this);
+    }
+    
+    gotoPage(pageIndex) {
+        this.setState({
+            pageIndex: pageIndex
+        });
     }
     
     componentWillReceiveProps(nextProps) {
@@ -22,11 +34,25 @@ class CategoryProductListView extends React.Component {
     }
     
     render() {
+        let productCount = this.props.categoryProducts.length;
+        let pageSize = 10;
+        let totalPages = Math.ceil(productCount / pageSize);
         
+        let pageStart = this.state.pageIndex * pageSize;
+        let pageEnd = (this.state.pageIndex + 1) * pageSize;
+        var displayed = [];
+        for(var index = pageStart; index < pageEnd; ++index) {
+            if(index >= this.props.categoryProducts.length) {
+                break;
+            }
+            displayed.push(this.props.categoryProducts[index]);
+        }
+                               
         return (
             <div>
                 <div>
-                    {this.props.categoryProducts.map((product, index) => <CategoryProductView key={product.sku} categoryProduct={product} />)} 
+                    <CategoryProductListViewPaging totalPages={totalPages} onPageClicked={this.gotoPage} pageSize={pageSize} categoryProducts={this.props.categoryProducts} />
+                    {displayed.map((product, index) => <CategoryProductView key={product.sku} categoryProduct={product} />)} 
                 </div>
             </div>
         );

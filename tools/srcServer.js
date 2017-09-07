@@ -58,7 +58,7 @@ app.get(MagentoCategoryApi.Path4Categories + '/:categoryId/products', function(r
 
 app.get(MagentoProductApi.Path4Products + '/:sku', function(req, res, next) {
     res.set('Content-Type', 'application/json');
-    MagentoProductApi.loadProduct(MagentoAccountInfo.url, encodeURIComponent(req.params.sku)).then(response => {
+    MagentoProductApi.loadProduct(MagentoAccountInfo.url, req.params.sku).then(response => {
         console.log(response.data);
         
         res.status(200).json(response.data);    

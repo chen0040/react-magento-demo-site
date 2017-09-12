@@ -87,6 +87,10 @@ app.post(MagentoAccountApi.Path4LoginAsClient, function(req, res, next) {
     
 });
 
+app.get('/assets/images/:id', function(req, res) {
+  res.sendFile(path.join( __dirname, '../src/assets/images/' + req.params.id));
+});
+
 app.get('*', function(req, res) {
   res.sendFile(path.join( __dirname, '../src/index.html'));
 });

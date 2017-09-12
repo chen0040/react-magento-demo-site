@@ -19,6 +19,7 @@
     "bootstrap": "3.3.6",
     "jquery": "2.2.3",
     "react": "15.0.2",
+    "react-bootstrap-carousel": "^1.2.0",
     "react-dom": "15.0.2",
     "react-redux": "4.4.5",
     "react-router": "2.4.0",
